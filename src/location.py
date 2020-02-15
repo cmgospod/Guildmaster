@@ -6,7 +6,7 @@ class Location():
         self.x =  x
         self.y = y
     def __str__(self):
-        return f'{self.name} at {self.x}, {self.y}.'
+        return f'{self.name}, located at coordinates: {self.x}, {self.y}.'
 
 class Town(Location):
     def __init__(self, name, x, y, population):
@@ -14,7 +14,7 @@ class Town(Location):
         self.population = population
 
     def __str__(self):
-        super().__str__(self)
+        return super().__str__()
 
 
 class Dungeon(Location):
@@ -23,4 +23,4 @@ class Dungeon(Location):
         self.difficulty = difficulty
 
     def __str__(self):
-        super().__str__(self)
+        return super().__str__(self)
