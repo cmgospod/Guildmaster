@@ -4,9 +4,16 @@ from random import choice, randint, sample
 from location import Location, Town, Dungeon
 from character import *
 
-t = Town("Hyperia", 40, 50, 50000)
+hyperia = Town("Hyperia", 40, 50, population=50000)
+riverside = Town("Riverside", 50, 50, population=8000)
+noctus = Dungeon("Noctus", 66, 66, difficulty=4)
+c = Hero("John", hyperia, 1, "Fastidious", 30)
+hyperia.road_e = riverside
+riverside.road_w = hyperia
+riverside.road_n = noctus
+noctus.road_s = riverside
 
-c = Hero("John", t, 1, "Fastidious", 30)
+
 
 
 classes = (Barbarian, Wizard, Rogue, Cleric)
@@ -15,19 +22,19 @@ toons = []
 # Initial setup
 
 # Random names
-firstnames = ("John", "David")
-lastnames = ("Johnson", "Gospodinoff")
+firstnames = ("John", "David", "Jacob", "William", "Anna", "Spencer", "Shawn", "Jack")
+lastnames = ("Johnson", "Gospodinoff", "Charles", "Seymour", "Crowley", "Williamson", "Abrams")
 names = []
-while len(names) < 4:
+while len(names) < 40:
     newname = f'{choice(firstnames)} {choice(lastnames)}'
     if newname in names:
         continue
     else:
         names.append(newname)
 
-for _ in range(4):
+for _ in range(20):
     name_ = names.pop(0)
-    location_ = t
+    location_ = choice([riverside, hyperia])
     level_ = 1
     second_trait_probability = randint(1,4)
     if second_trait_probability == 4:
